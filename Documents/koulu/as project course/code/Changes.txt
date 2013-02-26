@@ -1,0 +1,32 @@
+calculateBelonging.m
+	1. Create the whole matrix B at the start
+		Reason: Simulink does not support variables with changing size
+	2. Changed how the values b are added  to Matrix B
+		Reason: Simulink does not support variables with changing size
+	3. Changed the name of the input variable T to MFin (T = triangle, MFin = membership function)
+		Reason: Just thought it would be a better name.
+
+applyRules.m
+	1. Added the output membership functions as a input MFout
+		Reason: The amount of output functions is required for declaring the matrix Bout at the start
+	2. Changed how the size of Bout is calculated
+		Reason: The size of Bout was calculated using max functions and simulink does not support variables with no upper bound
+
+
+defuzzify.m
+	1. Declared A, c, Ao and co at the start
+		Reason: Simulink does not support variables with changing size
+	2. Function caac was called incorrectly at line 9 (input arguments were in were swapped)
+		Reason: Correcting a stupid mistake
+
+caac.m
+	1. Declared a, b, c, d, ll, el, er and lr at the start
+		Reason: Variables were used inside "if" clause and caused error in simulink
+	2. Added special case if the belonging B is 0.
+		Reason: Returned NaN (not a number) on test.
+
+overlap.m
+	1. Declared a, b, c, d, ll, el, er and lr at the start
+		Reason: Variables were used inside "if" clause and caused error in simulink
+	2. Added special case if min(h1, h2) is 0.
+		Reason: Returned NaN (not a number) on test.
